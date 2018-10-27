@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ReactHookComponent() {
   const [count, setCount] = useState(0);
-  const [fruit, setFruit] = useState(null)
+  const [fruit, setFruit] = useState(null);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
+  useEffect(() => {
+    const defaultColor = '#282c34';
+    const AppHeader = document.querySelector('.App-header');
+    const colorMap = {
+      strawberry: 'red',
+      papaya: 'orange',
+      banana: 'yellow'
+    }
+    fruit
+      ? AppHeader.style.backgroundColor = colorMap[fruit]
+      : AppHeader.style.backgroundColor = defaultColor;
+    
+  });
 
   return (
     <div>
